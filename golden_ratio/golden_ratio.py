@@ -41,6 +41,9 @@ def golden_ratio_analysis(img, display=False):
         nose_to_mouth = euclidean_distance((landmarks.part(33).x, landmarks.part(33).y), (landmarks.part(51).x, landmarks.part(51).y))
         eyebrow_distance = euclidean_distance((landmarks.part(21).x, landmarks.part(21).y), (landmarks.part(22).x, landmarks.part(22).y))
         face_width = euclidean_distance((landmarks.part(0).x, landmarks.part(0).y), (landmarks.part(16).x, landmarks.part(16).y))
+        face_height = euclidean_distance((landmarks.part(8).x, landmarks.part(8).y), average_point((landmarks.part(19).x, landmarks.part(19).y), (landmarks.part(24).x, landmarks.part(24).y)))
+        nose_to_jaw = euclidean_distance((landmarks.part(33).x, landmarks.part(33).y), (landmarks.part(8).x, landmarks.part(8).y))
+        mouth_to_jaw = euclidean_distance((landmarks.part(57).x, landmarks.part(57).y), (landmarks.part(8).x, landmarks.part(8).y))
         # Calculate ratios
         ratios = {
             'under_eyes/interocular': under_eyes / interocular,
@@ -53,6 +56,11 @@ def golden_ratio_analysis(img, display=False):
             'nose_width/upper_lip_height': nose_width / upper_lip_to_nose,
             'interocular/nose_to_mouth': interocular / nose_to_mouth,
             'eyebrow_distance/face_width':eyebrow_distance / face_width,
+            'lip_height/nose_to_mouth': lip_height / nose_to_mouth,
+            'face_height/face_width': face_height / face_width,
+            'nose_to_jaw/mouth_to_jaw': nose_to_jaw / mouth_to_jaw,
+            'nose_width/nose_to_mouth': nose_width / nose_to_mouth,
+            'mouth_width/nose_width': mouth_width / nose_width,
         }
         
  
